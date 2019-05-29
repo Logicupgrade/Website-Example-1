@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" type="text/css" href="style2.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+	<script
+  src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+  integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<div class="logo-bar">
+		<div id="laser"></div>
+		<h3 class="ml3">
+			<span>3</span>
+			<span>D</span>
+			<span></span>
+			<span>S</span>
+			<span>c</span>
+			<span>a</span>
+			<span>n</span>
+			<span class="space">   </span>
+			<span>D</span>
+			<span>e</span>
+			<span>s</span>
+			<span>i</span>
+			<span>g</span>
+			<span>n</span>
+		</h3>
+	</div>
+
+	<div class="navbar">
+		<ul>
+		  <li >
+		    <a id ="scanning" href="#">3D Scanning </a>
+		  </li>
+		  <li >
+		    <a id ="printing" href="#">3D Modeling</a>
+		  </li>
+		  <li >
+		    <a id="milling" href="#">3D Prototyping</a>
+		  </li>
+		  <li >
+		    <a id="contact" href="#">Contact</a>
+		  </li>
+		</ul>
+	</div>
+
+	<div class="main-content"> 
+		
+		<div class="display-discription">
+			<h1>3D Scanning</h1>
+			<p class="lead">3D Scanning uses laser technology to measure difficult contours. Making it possible to reproduce geometries using 3D modeling techniques.</p>
+		</div>
+		<img src="Images/lightbulbscan.jpg" class="display-image">
+	</div>
+
+	<div class="footer">
+	    <h2>contact@3dscan.design </h2>
+	</div> 
+
+<script>
+	function myMove() {
+	  var elem = document.getElementById("laser");   
+	  var pos = 0;
+	  var id = setInterval(frame, 20);
+	  function frame() {
+	    if (pos >= window.innerWidth-22) {
+	      clearInterval(id);
+	      elem.style.display = "none";
+	    } else {
+	      pos+=7; 
+	      //elem.style.top = pos + 'px'; 
+	      elem.style.left = pos + 'px'; 
+	    }
+	  }
+
+	}
+
+
+
+//http://tobiasahlin.com/moving-letters/#
+
+	// Wrap every letter in a span
+$('.ml3').each(function(){
+  $(this).html($(this).text().replace(/([^\x00-\x80]|\w)/g, "<span class='letter'>$&</span>"));
+});
+
+anime.timeline({loop: false})
+  .add({
+    targets: '.ml3 .letter',
+    opacity: [0,1],
+    easing: "easeInOutQuad",
+    duration: 2250,
+    delay: function(el, i) {
+      return 150 * (i+1)
+    }
+  });
+
+  myMove();
+</script>
+
+
+
+</body>
+</html>
